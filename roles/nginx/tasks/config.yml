@@ -2,6 +2,10 @@
 
 - name: Configure nginx
   block:
+    - name: Find out if it is baremetal or vm
+      command: "systemd-detect-virt"
+      register: virt
+      ignore_errors: true
 
     - name: selinux disable permanently
       selinux:
@@ -26,7 +30,7 @@
     - name: update nginx statics
       copy:
         src: "files/"
-        dest: "{{ root_dir }}"
+        dest: "{{ nginx_config.root_dir }}"
         owner: nginx
       notify:
         - reload nginx

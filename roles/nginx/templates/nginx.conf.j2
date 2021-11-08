@@ -12,7 +12,7 @@ http {
 
     server {
         location / {
-            root {{ root_dir }};
+            root {{ nginx_config.root_dir }};
             index index.html;
         }
     }
