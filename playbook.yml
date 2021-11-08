@@ -29,6 +29,7 @@
       become: yes
       when: virt.stdout != "lxc"
 
+
     - name: create filesystem
       filesystem:
         fstype: xfs
