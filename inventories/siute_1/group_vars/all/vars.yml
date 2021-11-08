@@ -1,1 +1,2 @@
-root_dir: "/data/nginx/html"
+nginx_config:
+  root_dir: "/data/nginx/html"

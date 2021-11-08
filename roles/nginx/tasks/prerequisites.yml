@@ -2,6 +2,11 @@
 
 - name: Prepare step for nginx
   block:
+    - name: Find out if it is baremetal or vm
+      command: "systemd-detect-virt"
+      register: virt
+      ignore_errors: true
+
     - name: Mount up device
       parted:
         device: /dev/sdb
@@ -26,7 +31,7 @@
 
     - name: create directory for nginx files
       file:
-        path: "{{ root_dir }}"
+        path: "{{ nginx_config.root_dir }}"
         state: directory
         mode: 0755
         owner: root
