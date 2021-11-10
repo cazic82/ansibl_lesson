@@ -2,6 +2,7 @@
 
 - hosts: appservers
   roles:
-    - nginx
+#    - nginx
+    - new-user
 #  vars:
 #    root_dir: "/data/nginx/html"
